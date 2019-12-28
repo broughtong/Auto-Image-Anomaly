@@ -1,0 +1,374 @@
+=== Image 540502 ===
+	Expected a banana (0.916594)
+=== Image 575970 ===
+	Expected a spoon (0.996701)
+=== Image 407614 ===
+	Unexpected surfboard (0.000002)
+=== Image 522007 ===
+	Expected a spoon (0.932580)
+=== Image 136355 ===
+	Expected a apple (0.924813)
+=== Image 68833 ===
+	Expected a bottle (0.931428)
+=== Image 149222 ===
+	Unexpected carrot (0.000003)
+=== Image 368900 ===
+	Expected a bed (0.925085)
+=== Image 240940 ===
+	Unexpected car (0.000003)
+=== Image 17899 ===
+	Unexpected bird (0.000023)
+=== Image 10363 ===
+	Unexpected bottle (0.000024)
+=== Image 338304 ===
+	Unexpected sheep (0.000611)
+=== Image 555050 ===
+	Unexpected traffic light (0.000006)
+	Unexpected cow (0.000274)
+	Unexpected couch (0.000090)
+=== Image 182611 ===
+	Expected a knife (0.989662)
+=== Image 453302 ===
+	Expected a oven (0.965304)
+=== Image 84241 ===
+	Expected a carrot (0.970633)
+=== Image 74209 ===
+	Expected a vase (0.909226)
+=== Image 530836 ===
+	Expected a orange (0.917976)
+=== Image 441247 ===
+	Expected a apple (0.981375)
+	Expected a potted plant (0.901094)
+=== Image 93437 ===
+	Expected a potted plant (0.930837)
+=== Image 458768 ===
+	Unexpected bench (0.000327)
+=== Image 543047 ===
+	Expected a vase (0.953700)
+=== Image 414510 ===
+	Expected a umbrella (0.939799)
+=== Image 345027 ===
+	Expected a car (0.991716)
+	Unexpected motorcycle (0.000049)
+=== Image 96001 ===
+	Unexpected umbrella (0.000075)
+=== Image 393569 ===
+	Unexpected laptop (0.000050)
+=== Image 445658 ===
+	Unexpected teddy bear (0.000016)
+=== Image 248111 ===
+	Unexpected handbag (0.000324)
+=== Image 415194 ===
+	Expected a oven (0.929599)
+=== Image 52996 ===
+	Unexpected backpack (0.000287)
+	Unexpected handbag (0.000002)
+	Unexpected oven (0.000103)
+=== Image 485844 ===
+	Expected a bottle (0.922511)
+=== Image 78266 ===
+	Expected a oven (0.972276)
+=== Image 156278 ===
+	Expected a bottle (0.941274)
+=== Image 560474 ===
+	Unexpected toothbrush (0.000492)
+=== Image 298396 ===
+	Expected a cake (0.919521)
+=== Image 34873 ===
+	Unexpected apple (0.000986)
+=== Image 168337 ===
+	Unexpected fire hydrant (0.000232)
+=== Image 492362 ===
+	Unexpected skateboard (0.000165)
+	Unexpected bowl (0.000549)
+=== Image 173008 ===
+	Expected a knife (0.961478)
+	Expected a bowl (0.991665)
+=== Image 66231 ===
+	Expected a oven (0.950900)
+=== Image 25096 ===
+	Unexpected zebra (0.000041)
+=== Image 365387 ===
+	Unexpected bed (0.000236)
+=== Image 366884 ===
+	Unexpected dog (0.000455)
+	Expected a laptop (0.907927)
+=== Image 77396 ===
+	Expected a couch (0.986765)
+=== Image 194832 ===
+	Unexpected bus (0.000428)
+=== Image 190236 ===
+	Expected a bench (0.991084)
+	Unexpected sports ball (0.000002)
+	Unexpected vase (0.000460)
+=== Image 226171 ===
+	Expected a mouse (0.943392)
+=== Image 363840 ===
+	Unexpected handbag (0.000254)
+=== Image 63740 ===
+	Unexpected banana (0.000401)
+	Unexpected orange (0.000194)
+=== Image 571857 ===
+	Unexpected bicycle (0.000124)
+=== Image 144003 ===
+	Unexpected remote (0.000036)
+=== Image 436738 ===
+	Unexpected book (0.000005)
+=== Image 316015 ===
+	Expected a mouse (0.980990)
+=== Image 198641 ===
+	Expected a mouse (0.914503)
+=== Image 119233 ===
+	Unexpected bird (0.000662)
+=== Image 515025 ===
+	Unexpected cat (0.000002)
+=== Image 231831 ===
+	Expected a tv (0.920937)
+=== Image 375493 ===
+	Unexpected cat (0.000312)
+=== Image 278463 ===
+	Unexpected cat (0.000517)
+=== Image 520531 ===
+	Expected a couch (0.989717)
+=== Image 559956 ===
+	Unexpected sheep (0.000502)
+=== Image 435206 ===
+	Expected a bird (0.946925)
+=== Image 430073 ===
+	Unexpected cow (0.000006)
+=== Image 564336 ===
+	Unexpected parking meter (0.000341)
+	Unexpected laptop (0.000241)
+=== Image 153527 ===
+	Unexpected bottle (0.000628)
+	Unexpected couch (0.000934)
+=== Image 76547 ===
+	Unexpected traffic light (0.000000)
+	Expected a umbrella (0.979921)
+=== Image 227399 ===
+	Expected a bus (0.925417)
+=== Image 39484 ===
+	Unexpected airplane (0.000046)
+	Unexpected traffic light (0.000021)
+	Unexpected chair (0.000848)
+=== Image 376625 ===
+	Unexpected bottle (0.000066)
+=== Image 334555 ===
+	Unexpected cow (0.000842)
+=== Image 153011 ===
+	Unexpected bus (0.000024)
+	Unexpected dining table (0.000065)
+=== Image 377946 ===
+	Unexpected fork (0.000006)
+	Unexpected knife (0.000120)
+=== Image 565563 ===
+	Unexpected car (0.000526)
+=== Image 67616 ===
+	Expected a umbrella (0.900946)
+=== Image 158956 ===
+	Unexpected handbag (0.000091)
+=== Image 151480 ===
+	Unexpected baseball glove (0.000192)
+=== Image 338624 ===
+	Unexpected chair (0.000199)
+=== Image 385997 ===
+	Expected a bench (0.928831)
+=== Image 540414 ===
+	Unexpected bus (0.000011)
+	Unexpected umbrella (0.000666)
+	Unexpected bowl (0.000046)
+=== Image 40083 ===
+	Unexpected bottle (0.000543)
+=== Image 172877 ===
+	Unexpected couch (0.000540)
+=== Image 449432 ===
+	Unexpected boat (0.000745)
+=== Image 455157 ===
+	Expected a chair (0.981259)
+=== Image 215072 ===
+	Unexpected umbrella (0.000354)
+	Expected a dining table (0.910573)
+=== Image 382030 ===
+	Unexpected sports ball (0.000594)
+	Expected a chair (0.993800)
+=== Image 55150 ===
+	Unexpected car (0.000462)
+=== Image 578922 ===
+	Expected a sink (0.932068)
+=== Image 387098 ===
+	Unexpected spoon (0.000010)
+=== Image 381971 ===
+	Expected a traffic light (0.936678)
+=== Image 192670 ===
+	Unexpected bottle (0.000427)
+=== Image 345466 ===
+	Unexpected backpack (0.000001)
+=== Image 59598 ===
+	Unexpected banana (0.000113)
+=== Image 388903 ===
+	Unexpected apple (0.000050)
+=== Image 102805 ===
+	Expected a umbrella (0.921190)
+=== Image 231508 ===
+	Expected a baseball bat (0.904026)
+=== Image 425361 ===
+	Expected a dining table (0.992285)
+=== Image 535253 ===
+	Unexpected banana (0.000421)
+=== Image 110999 ===
+	Expected a dining table (0.963815)
+=== Image 551660 ===
+	Expected a carrot (0.951244)
+=== Image 21503 ===
+	Unexpected sandwich (0.000289)
+=== Image 313034 ===
+	Expected a book (0.939549)
+=== Image 156643 ===
+	Unexpected teddy bear (0.000431)
+=== Image 468505 ===
+	Unexpected bicycle (0.000158)
+=== Image 460494 ===
+	Expected a spoon (0.926654)
+=== Image 137246 ===
+	Expected a chair (0.998174)
+=== Image 16451 ===
+	Expected a dining table (0.914363)
+=== Image 416885 ===
+	Expected a cup (0.917979)
+=== Image 350148 ===
+	Unexpected carrot (0.000033)
+=== Image 304984 ===
+	Expected a backpack (0.902043)
+=== Image 171382 ===
+	Expected a bench (0.946113)
+=== Image 300276 ===
+	Unexpected bowl (0.000837)
+=== Image 450399 ===
+	Expected a cup (0.929064)
+=== Image 529122 ===
+	Unexpected knife (0.000258)
+=== Image 331817 ===
+	Unexpected tv (0.000601)
+=== Image 334483 ===
+	Unexpected handbag (0.000143)
+=== Image 36844 ===
+	Unexpected bicycle (0.000001)
+=== Image 91406 ===
+	Unexpected book (0.000163)
+=== Image 494913 ===
+	Unexpected fork (0.000069)
+	Expected a potted plant (0.961959)
+=== Image 453341 ===
+	Expected a laptop (0.953608)
+=== Image 92091 ===
+	Unexpected boat (0.000449)
+	Unexpected toothbrush (0.000004)
+=== Image 301421 ===
+	Unexpected car (0.000000)
+=== Image 218439 ===
+	Expected a book (0.937134)
+=== Image 402720 ===
+	Expected a dining table (0.939283)
+=== Image 10707 ===
+	Unexpected backpack (0.000525)
+=== Image 458663 ===
+	Unexpected umbrella (0.000020)
+	Unexpected sink (0.000613)
+	Unexpected scissors (0.000671)
+=== Image 24610 ===
+	Expected a bed (0.909224)
+=== Image 181753 ===
+	Unexpected horse (0.000011)
+	Expected a potted plant (0.921458)
+=== Image 512657 ===
+	Unexpected clock (0.000032)
+=== Image 482275 ===
+	Unexpected vase (0.000887)
+=== Image 327701 ===
+	Unexpected cup (0.000034)
+=== Image 35279 ===
+	Unexpected tennis racket (0.000093)
+=== Image 571313 ===
+	Expected a bottle (0.981434)
+	Expected a laptop (0.976338)
+=== Image 296222 ===
+	Expected a dining table (0.939473)
+=== Image 491008 ===
+	Unexpected potted plant (0.000032)
+=== Image 361238 ===
+	Unexpected backpack (0.000288)
+	Unexpected pizza (0.000338)
+=== Image 543581 ===
+	Unexpected bottle (0.000179)
+=== Image 125778 ===
+	Unexpected car (0.000347)
+=== Image 573094 ===
+	Unexpected bicycle (0.000044)
+=== Image 246968 ===
+	Expected a bowl (0.921584)
+=== Image 384527 ===
+	Expected a cake (0.971926)
+=== Image 166166 ===
+	Expected a couch (0.904120)
+=== Image 139684 ===
+	Expected a potted plant (0.900647)
+=== Image 84362 ===
+	Unexpected truck (0.000000)
+=== Image 357888 ===
+	Unexpected kite (0.000001)
+=== Image 440184 ===
+	Unexpected cup (0.000034)
+=== Image 553669 ===
+	Unexpected laptop (0.000102)
+=== Image 54593 ===
+	Unexpected motorcycle (0.000010)
+	Unexpected backpack (0.000003)
+	Unexpected bottle (0.000000)
+=== Image 370270 ===
+	Unexpected sports ball (0.000327)
+=== Image 524456 ===
+	Unexpected handbag (0.000068)
+=== Image 312237 ===
+	Expected a cell phone (0.900959)
+=== Image 419653 ===
+	Expected a sink (0.910046)
+=== Image 14038 ===
+	Expected a remote (0.994557)
+=== Image 286182 ===
+	Unexpected chair (0.000892)
+=== Image 384661 ===
+	Expected a sink (0.940270)
+=== Image 417632 ===
+	Expected a sandwich (0.915080)
+=== Image 404678 ===
+	Unexpected bench (0.000003)
+=== Image 125572 ===
+	Expected a car (0.978944)
+=== Image 160556 ===
+	Expected a mouse (0.964468)
+=== Image 180751 ===
+	Expected a chair (0.919281)
+=== Image 579070 ===
+	Expected a wine glass (0.918078)
+=== Image 120420 ===
+	Expected a boat (0.945821)
+=== Image 322163 ===
+	Unexpected potted plant (0.000100)
+=== Image 488673 ===
+	Expected a dining table (0.938102)
+=== Image 147415 ===
+	Expected a tv (0.935905)
+=== Image 273420 ===
+	Unexpected car (0.000715)
+	Unexpected bed (0.000003)
+=== Image 266768 ===
+	Unexpected bowl (0.000112)
+=== Image 410880 ===
+	Unexpected teddy bear (0.000775)
+=== Image 192904 ===
+	Unexpected bed (0.000008)
+=== Image 349480 ===
+	Expected a dining table (0.984878)
+	Expected a vase (0.997821)
+=== Image 189436 ===
+	Expected a chair (0.964247)

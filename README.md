@@ -26,7 +26,8 @@ Else:
 
 ## Train autoencoder
 `python3 auto.py`
-If the val_loss keeps dropping, we're in business
+
+If the val_loss keeps dropping, we're in business :D
 
 ## Prep validation
 `python3 validate.py`

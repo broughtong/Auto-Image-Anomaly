@@ -36,12 +36,16 @@ for frame in data:
 
 	first = True
 	for i in zipped:
-		if i[0] == 0 and i[1] > 0.9:
+
+		# if frame[0] != 290076:
+		# 	continue
+
+		if i[0] == 0 and i[1] > 0.85:
 			if first:
 				print("=== Image %s ===" % (frame[0]))
 				first = False
 			print("\tExpected a %s (%f)" % (i[2], i[1]))
-		elif i[0] == 1 and i[1] < 0.001:
+		elif i[0] == 1 and i[1] < 0.01:
 			if first:
 				print("=== Image %s ===" % (frame[0]))
 				first = False

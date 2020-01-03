@@ -1,3 +1,5 @@
+For examining results, take the image ids, and put them in the search box on here: http://cocodataset.org/#explore
+
 === Image 540502 ===
 	Expected a banana (0.916594)
 === Image 575970 ===

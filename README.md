@@ -40,3 +40,25 @@ For examining results, take the image ids from above, and put them in the search
 
 Remember, the actual images themselves are irrelevant, compare to the categories of annotations
 
+## Experiments
+
+To reproduce the experiments from our paper follow the instructions below.
+
+### Experiment 1 - Injecting objects into scenes
+
+To randomly add uncommon objects into the scene that weren't there and evaluate how often they are detected as anomalous:
+`python3 exp1-pos-anom.py`
+
+And to find out how often they are detected as the most anomalous object in the scene:
+`python3 exp1-pos-most-anom.py`
+
+To randomly remove an object from the scene and evaluate how strongly it was missing run:
+`python3 exp1-neg-anom.py`
+
+And to find out how often it was the most missing object from the scene:
+`python3 exp1-neg-most-anom.py`
+
+### Experiment 2 - How often the autoencoder agrees with YOLO that an object is not annotated
+
+Download the images for COCO:
+`python3 exp2-download.py`

@@ -36,6 +36,25 @@ n = 0
 
 for frame in data:
 
+	inputs = np.array([frame[1]], dtype=np.float32)
+	predictions = autoencoder.predict(inputs)
+
+	nAnnotations = 0
+	for i in inputs[0]:
+		if i == 1:
+			nAnnotations += 1
+
+	if nAnnotations < 5:
+		continue
+
+	# anomImage = False
+	# for i in range(0, len(inputs[0])):
+	# 	if abs(inputs[0][i] - predictions[0][i]) > 0.5:
+	# 		anomImage = True
+	# 		break
+	# if anomImage == True:
+	# 	continue
+
 	changedVals = []
 	for i in range(anomsPerImage):
 		changed = False
@@ -77,3 +96,4 @@ for frame in data:
 	print("Correct: " + str(correct) + "/" + str(anomsPerImage))
 
 print("Avg: " + str(total / float(n)) + "/" + str(anomsPerImage) + " or " + str((((total / float(n)) / anomsPerImage) * 100)) + "%")
+print(n)

@@ -36,6 +36,25 @@ n = 0
 
 for frame in data:
 
+	inputs = np.array([frame[1]], dtype=np.float32)
+	predictions = autoencoder.predict(inputs)
+
+	nAnnotations = 0
+	for i in inputs[0]:
+		if i == 1:
+			nAnnotations += 1
+
+	if nAnnotations < 5:
+		continue
+
+	anomImage = False
+	for i in range(0, len(inputs[0])):
+		if abs(inputs[0][i] - predictions[0][i]) > 0.2:
+			anomImage = True
+			break
+	if anomImage == True:
+		continue
+
 	changedVals = []
 	for i in range(anomsPerImage):
 		changed = False
@@ -54,11 +73,11 @@ for frame in data:
 	correct = 0
 	for i in changedVals:
 		#at 0.1 (some low prob of being there) ~ 13.5% accuracy
-		if zipped[i][1] > 0.1:
+		# if zipped[i][1] > 0.1:
 		#at 0.25 (low prob of being there) ~ 9.1% accuracy
 		# if zipped[i][1] > 0.2:
 		#at 0.5 (more likely than not) ~ 3.5% accuracy
-		# if zipped[i][1] > 0.5:
+		if zipped[i][1] > 0.5:
 		#at 0.8 (very sure it should be there) ~ 1.3% acc
 		# if zipped[i][1] > 0.8:
 			correct += 1
@@ -69,3 +88,4 @@ for frame in data:
 	print("Correct: " + str(correct) + "/" + str(anomsPerImage))
 
 print("Avg: " + str(total / float(n)) + "/" + str(anomsPerImage) + " or " + str((((total / float(n)) / anomsPerImage) * 100)) + "%")
+print("N of images: " + str(n))

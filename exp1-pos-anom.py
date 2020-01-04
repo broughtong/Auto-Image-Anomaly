@@ -9,7 +9,10 @@ import random
 idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37, 77, 18, 40, 55, 87, 10, 15, 52, 54, 39, 51, 56, 8, 38, 6, 73, 32, 67, 81, 53, 31, 75, 44, 78, 85, 42, 60, 3, 84, 58, 64, 74, 49, 27, 47, 16, 5, 17, 36, 9, 80, 63, 76, 72, 48, 62, 14, 70, 25, 7, 82, 28, 50, 43, 46, 65, 2, 61]
 
 valfn = "annotations/val-distribution-noppl-multi.json"
-autoencoder = load_model('models/autoencoder-79-10.h5')
+
+encDimsValues = list(range(5, 16))
+
+autoencoders = [load_model('models/autoencoder-79-' + str(i) +'.h5') for i in encDimsValues]
 
 size = 80
 if "-noppl-" in valfn:
@@ -39,59 +42,94 @@ with open(valfn, "r") as f:
 
 anomsPerImage = 1
 
-total = 0
-n = 0
+anomsToTest = 10
+
 
 changedVals = []
-anom = random.randint(0, len(idsToAdd) - 1)
-changedVals.append(anom)
+seed_max = 10
+for seed in range(0, seed_max):
+	totals = []
+	ns = []
+	random.seed(seed)
+	# anom = random.randint(0, len(idsToAdd) - 1)
+	anoms = np.random.choice(list(range(0, len(idsToAdd) - 1)), anomsToTest)
+	print("# seed {} out of {}".format(seed, seed_max))
+	print(anoms)
+	# changedVals.append(anom)
 
-for frame in data:
+	for autoencoder in autoencoders:
+		total = 0
+		n = 0
+		for frame in data:
 
-	inputs = np.array([frame[1]], dtype=np.float32)
-	predictions = autoencoder.predict(inputs)
+			inputs = np.array([frame[1]], dtype=np.float32)
+			predictions = autoencoder.predict(inputs)
+			
+			nAnnotations = 0
+			for i in inputs[0]:
+				if i == 1:
+					nAnnotations += 1
 
-	anomImage = False
-	for i in range(0, len(inputs[0])):
-		if abs(inputs[0][i] - predictions[0][i]) > 0.2:
-			anomImage = True
-			break
-	if anomImage == True:
-		continue
+			if nAnnotations < 3:
+				continue
 
-	if frame[1][anom] == 1:
-		continue
-	else:
-		frame[1][anom] = 1
+			# anomImage = False
+			# for i in range(0, len(inputs[0])):
+			# 	if abs(inputs[0][i] - predictions[0][i]) > 0.2:
+			# 		anomImage = True
+			# 		break
+			# if anomImage == True:
+			# 	continue
+			
+			for a in anoms:
+				# if frame[1][anom] == 1:
+				#	 continue
+				# else:
+				#	 frame[1][anom] = 1
+				if frame[1][a] == 1:
+					continue
+				else:
+					frame[1][a] = 1
 
-	# changedVals = []
-	# for i in range(anomsPerImage):
-	# 	changed = False
-	# 	while changed == False:
-	# 		anom = random.randint(0, len(idsToAdd) - 1)
-	# 		if frame[1][anom] == 0:
-	# 			changedVals.append(anom)
-	# 			frame[1][anom] = 1
-	# 			changed = True
+				# changedVals = []
+				# for i in range(anomsPerImage):
+				# 	changed = False
+				# 	while changed == False:
+				# 		anom = random.randint(0, len(idsToAdd) - 1)
+				# 		if frame[1][anom] == 0:
+				# 			changedVals.append(anom)
+				# 			frame[1][anom] = 1
+				# 			changed = True
 
-	inputs = np.array([frame[1]], dtype=np.float32)
-	predictions = autoencoder.predict(inputs)
+				inputs = np.array([frame[1]], dtype=np.float32)
+				predictions = autoencoder.predict(inputs)
 
-	zipped = list(zip(inputs[0], predictions[0], cats))
+				zipped = list(zip(inputs[0], predictions[0], cats))
 
-	correct = 0
-	for i in changedVals:
-		#at 0.5 (more likely than not) ~ 71% accuracy
-		if zipped[i][1] < 0.5:
-		#at 0.2 (very sure of the anomaly) ~ 61% acc
-		# if zipped[i][1] < 0.2:
-			correct += 1
+				correct = 0
+				#at 0.5 (more likely than not) ~ 71% accuracy
+				if zipped[a][1] < 0.5:
+				#at 0.2 (very sure of the anomaly) ~ 61% acc
+				# if zipped[a][1] < 0.2:
+					correct += 1
+				# for i in changedVals:
+				# 	#at 0.5 (more likely than not) ~ 71% accuracy
+				# 	if zipped[i][1] < 0.5:
+				# 	#at 0.2 (very sure of the anomaly) ~ 61% acc
+				# 	# if zipped[i][1] < 0.2:
+				# 		correct += 1
 
-	n += 1
-	total += correct
+				n += 1
+				total += correct
+				
+				frame[1][a] = 0
 
-	print("Correct: " + str(correct) + "/" + str(anomsPerImage))
+				#print("Correct: " + str(correct) + "/" + str(anomsPerImage))
+		totals.append(total)
+		ns.append(n)
 
-print("Avg: " + str(total / float(n)) + "/" + str(anomsPerImage) + " or " + str((((total / float(n)) / anomsPerImage) * 100)) + "%")
-print(n)
-print(changedVals)
+	for i in range(len(encDimsValues)):
+		#print("Avg: " + str(total / float(n)) + "/" + str(anomsPerImage) + " or " + str((((total / float(n)) / anomsPerImage) * 100)) + "%")
+		print("==" + str(encDimsValues[i]) + "== " + str((((totals[i] / float(ns[i])) / anomsPerImage) * 100)) + "% accuracy over " + str(ns[i]) + " images")
+		#print(n)
+	#print(changedVals)

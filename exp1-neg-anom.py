@@ -131,7 +131,7 @@ for seed in range(0, seed_max):
 				if i == 1:
 					nAnnotations += 1
 
-			if nAnnotations < 6:
+			if nAnnotations < 5:
 				continue
 
 			anomImage = False
@@ -181,11 +181,11 @@ for seed in range(0, seed_max):
 				# 	# if zipped[i][1] > 0.8:
 				# 		correct += 1
 				#at 0.1 (some low prob of being there) ~ 13.5% accuracy
-				# if zipped[a][1] > 0.1:
+				#if zipped[a][1] > 0.1:
 				#at 0.25 (low prob of being there) ~ 9.1% accuracy
-				# if zipped[a][1] > 0.2:
+				if zipped[a][1] > 0.25:
 				#at 0.5 (more likely than not) ~ 3.5% accuracy
-				if zipped[a][1] > 0.5:
+				#if zipped[a][1] > 0.5:
 				#at 0.8 (very sure it should be there) ~ 1.3% acc
 				# if zipped[a][1] > 0.8:
 					correct += 1

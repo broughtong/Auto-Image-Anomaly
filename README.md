@@ -60,5 +60,8 @@ And to find out how often it was the most missing object from the scene:
 
 ### Experiment 2 - How often the autoencoder agrees with YOLO that an object is not annotated
 
+Download yolo weights:
+`cd yolo;wget https://pjreddie.com/media/files/yolov3.weights;cd ../`
+
 Download the images for COCO:
 `python3 exp2-download.py`

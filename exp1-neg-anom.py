@@ -3,6 +3,7 @@ from keras.models import load_model
 import json
 import numpy as np
 import random
+import sys
 
 valfn = "annotations/val-distribution-noppl-multi.json"
 
@@ -107,7 +108,7 @@ anomsToTest = 5
 
 
 changedVals = []
-seed_max = 10
+seed_max = 20
 for seed in range(0, seed_max):
 	totals = []
 	ns = []
@@ -117,6 +118,7 @@ for seed in range(0, seed_max):
 	# print(anoms)
 	# changedVals.append(anom)
 	print("# seed {} out of {}".format(seed, seed_max))
+	print("# seed {} out of {}".format(seed, seed_max), file=sys.stderr)
 
 	for autoencoder in autoencoders:
 		total = 0
@@ -142,7 +144,7 @@ for seed in range(0, seed_max):
 			if anomImage == True:
 				continue
 			
-			anoms = np.random.choice(np.argwhere(np.array(frame[1]) == 1)[:, 0], anomsToTest)
+			anoms = np.random.choice(np.argwhere(np.array(frame[1]) == 1)[:, 0], anomsToTest, replace=False)
 			#print(anoms)
 			for a in anoms:
 				# if frame[1][anom] == 1:
@@ -204,7 +206,9 @@ for seed in range(0, seed_max):
 		try:
 			acc = (((totals[i] / float(ns[i])) / anomsPerImage) * 100)
 			print("==" + str(encDimsValues[i]) + "== " + str(acc) + "% accuracy over " + str(ns[i]) + " images")
+			sys.stdout.flush()
 		except ZeroDivisionError:
 			print("==" + str(encDimsValues[i]) + "== " + str(ns[i]) + " images")
+			sys.stdout.flush()
 		#print(n)
 	#print(changedVals)

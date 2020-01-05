@@ -6,12 +6,12 @@ import random
 import sys
 
 #20 least common object ids in coco
-idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37]
-#idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37, 77, 18, 40, 55, 87, 10, 15, 52, 54, 39, 51, 56, 8, 38, 6, 73, 32, 67, 81, 53, 31, 75, 44, 78, 85, 42, 60, 3, 84, 58, 64, 74, 49, 27, 47, 16, 5, 17, 36, 9, 80, 63, 76, 72, 48, 62, 14, 70, 25, 7, 82, 28, 50, 43, 46, 65, 2, 61]
+# idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37]
+idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37, 77, 18, 40, 55, 87, 10, 15, 52, 54, 39, 51, 56, 8, 38, 6, 73, 32, 67, 81, 53, 31, 75, 44, 78, 85, 42, 60, 3, 84, 58, 64, 74, 49, 27, 47, 16, 5, 17, 36, 9, 80, 63, 76, 72, 48, 62, 14, 70, 25, 7, 82, 28, 50, 43, 46, 65, 2, 61]
 
 valfn = "annotations/val-distribution-noppl-multi.json"
 
-encDimsValues = list(range(5, 16))
+encDimsValues = list(range(1, 16))
 
 autoencoders = [load_model('models/autoencoder-79-' + str(i) +'.h5') for i in encDimsValues]
 
@@ -105,15 +105,25 @@ for seed in range(0, seed_max):
 
 				inputs = np.array([frame[1]], dtype=np.float32)
 				predictions = autoencoder.predict(inputs)
+				
+				inputs[inputs == 0] = np.nan
+				predictions[inputs == np.nan] = np.nan
+				top_n = 2
+				if a in np.argsort(predictions)[:top_n]:
+					correct = 1
+				else:
+					correct = 0
+				
+				
+                
+				#zipped = list(zip(inputs[0], predictions[0], cats))
 
-				zipped = list(zip(inputs[0], predictions[0], cats))
-
-				correct = 0
+				#correct = 0
 				#at 0.5 (more likely than not) ~ 71% accuracy
-				if zipped[a][1] < 0.5:
+				#if zipped[a][1] < 0.5:
 				#at 0.2 (very sure of the anomaly) ~ 61% acc
 				# if zipped[a][1] < 0.2:
-					correct += 1
+				#	correct += 1
 				# for i in changedVals:
 				# 	#at 0.5 (more likely than not) ~ 71% accuracy
 				# 	if zipped[i][1] < 0.5:

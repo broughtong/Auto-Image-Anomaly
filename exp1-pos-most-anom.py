@@ -64,6 +64,8 @@ for frame in data:
 		maxDiff = 0
 		maxDiffIdx = -1
 		for item in range(len(zipped)):
+			#if zipped[item][0] == 0:
+			#	continue
 			if item in poppedIdxs:
 				continue
 			diff = zipped[item][0] - zipped[item][1]

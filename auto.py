@@ -9,7 +9,7 @@ edgeDim = 80
 if "-noppl-" in fn:
 	edgeDim = 79
 	
-for i in range(5, 16):
+for i in range(1, 15):
 	encodedDim = i
 
 	input_img = Input(shape=(edgeDim,))

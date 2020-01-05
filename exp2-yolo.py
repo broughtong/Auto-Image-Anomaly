@@ -18,17 +18,19 @@ categories = []
 with open("annotations/instances_val2017.json", "r") as f:
 	categories = json.load(f)
 catmap = categories["categories"]
-catmap = [x["id"] for x in catmap]
-catmap = dict(zip(catmap, range(size+1)))
+#catmap = [x["id"] for x in catmap]
+catmap = list(map(lambda x: x[1], sorted([(x["id"], x["name"]) for x in catmap])))
+#catmap = dict(zip(catmap, range(size+1)))
 
 annos = []
 with open(valfn, "r") as f:
 	annos = json.load(f)
 
-net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
+net = cv2.dnn.readNet("yolo/yolov3.weights", "yolo/yolov3.cfg")
 classes = []
-with open("coco.names", "r") as f:
-	classes = [line.strip() for line in f.readlines()]
+#with open("coco.names", "r") as f:
+#	classes = [line.strip() for line in f.readlines()]
+classes = catmap
 layer_names = net.getLayerNames()
 output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
 colors = np.random.uniform(0, 255, size=(len(classes), 3))
@@ -96,9 +98,18 @@ for imgfn in files:
 		if zipped[i][0] > 0.3 and zipped[i][0] < 0.5 and zipped[i][1] > 0.1:
 			if annotation[i] != 1:
 				print("Yolo failed, but boosted: ", zipped[i], imgfn)
+				#font = cv2.FONT_HERSHEY_PLAIN
+				#x, y, w, h = boxes[i]
+				#label = str(classes[class_ids[i]])
+				#color = colors[i]
+				#cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+				#cv2.putText(img, label, (x, y + 30), font, 3, color, 3)
+				#cv2.imshow("Image", img)
+				#cv2.waitKey(0)
+				#cv2.destroyAllWindows()
 			else:
 				print("Maybe bad annotation: ", zipped[i], imgfn)
-				
+				continue
 				font = cv2.FONT_HERSHEY_PLAIN
 				for i in range(len(boxes)):
 					x, y, w, h = boxes[i]

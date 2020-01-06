@@ -2,3 +2,9 @@ models/*
 annotations/*
 annotations_trainval2017.zip
 libdarknet*
+*.pickle
+*.weights
+*.swp
+*.partial
+__pycache__/
+eval-images/*

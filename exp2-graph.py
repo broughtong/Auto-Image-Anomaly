@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 data = []
-with open('exp2-results-0.1.pickle', 'rb') as f:
+with open('exp2-results-05.pickle', 'rb') as f:
 	data = pickle.load(f)
 
 #yolo
@@ -29,7 +29,8 @@ for i in ae:
 
 plt.plot(x, y, '-x', label='YOLO w/ Autoencoder')
 
-plt.axvline(x=0.5, color='grey', linestyle='--', label="Autoencoder cut-off")
+plt.axvline(x=0.25, color='red', linestyle='--', label="YOLO default threshold")
+plt.axvline(x=0.5, color='blue', linestyle='--', label="Autoencoder cut-off")
 plt.legend(loc="lower right")
 plt.xlabel('Threshold', fontsize=16)
 plt.ylabel('Accuracy', fontsize=16)

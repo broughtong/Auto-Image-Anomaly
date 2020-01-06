@@ -60,6 +60,24 @@ for threshold in thresholds:
 
 	for imagefn in files:
 
+		#open coco annotation for the image
+		#it may not exist as the annotations file skips images with low number of detections etc
+		imgid = ""
+		annotation = []
+		try:
+			imgid = imagefn[:-4].lstrip("0")
+			annotation = annotations[int(imgid)]
+		except:
+			continue
+
+		nAnnotations = 0
+		for i in annotation:
+			if i == 1:
+				nAnnotations += 1
+
+		if nAnnotations < 3:
+			continue
+
 		#open image
 		img = cv2.imread(os.path.join("eval-images", imagefn))
 		height, width, channels = img.shape
@@ -94,16 +112,6 @@ for threshold in thresholds:
 					confidences.append(float(confidence))
 					class_ids.append(class_id)
 		classList = [classes[x] for x in class_ids]
-
-		#open coco annotation for the image
-		#it may not exist as the annotations file skips images with low number of detections etc
-		imgid = ""
-		annotation = []
-		try:
-			imgid = imagefn[:-4].lstrip("0")
-			annotation = annotations[int(imgid)]
-		except:
-			continue
 
 		uniqueIDs = list(set(class_ids))
 

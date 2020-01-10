@@ -84,7 +84,6 @@ for threshold in thresholds:
 
 		#yolo detection
 		results = darknet.detect(net, meta, img, thresh=threshold)
-		print(results)
 
 		#gather detections together that are above the threshold
 		class_ids = []

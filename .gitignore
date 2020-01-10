@@ -8,3 +8,5 @@ libdarknet*
 *.partial
 __pycache__/
 eval-images/*
+*.jpg
+darknet*

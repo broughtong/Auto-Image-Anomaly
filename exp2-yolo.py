@@ -100,7 +100,6 @@ for threshold in thresholds:
 		del coconames[0]
 		for i in range(len(coconames)):
 			cocomap[coconames[i]]  = i
-		print(cocomap)
 
 		for result in results:
 			if result[0] == "person":

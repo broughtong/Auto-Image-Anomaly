@@ -4,6 +4,7 @@ import numpy as np
 from keras.models import load_model
 import json
 import pickle
+import darknet
 
 #important!
 #above this threshold is taken as the truth for the ae
@@ -33,14 +34,13 @@ for i in os.walk("eval-images"):
 	files = i[2]
 
 #create yolo network
-net = cv2.dnn.readNet("yolo/yolov3.weights", "yolo/yolov3.cfg")
-layer_names = net.getLayerNames()
-output_layers = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+net = darknet.load_net("yolo/yolov3.cfg", "yolo/yolov3.weights", 0)
+meta = darknet.load_meta("yolo/coco.data")
 
 yoloResults = []
 aeResults = []
 
-#perform experiment for range of thresholds 
+#perform experiment for range of thresholds
 #more detail at lower thresholds, less especially above 0.5
 # thresholds = np.concatenate([np.array([0.000001, 0.0001]), np.arange(0.01, 0.05, 0.01), np.arange(0.05, 0.5, 0.05), np.arange(0.5, 1, 0.1)])
 thresholds = np.concatenate([np.arange(0.05, 0.5, 0.05), np.array([0.5, 0.9])])
@@ -83,34 +83,29 @@ for threshold in thresholds:
 		height, width, channels = img.shape
 
 		#yolo detection
-		blob = cv2.dnn.blobFromImage(img, 0.00392, (416, 416), (0, 0, 0), True, crop=False)
-		net.setInput(blob)
-		outputs = net.forward(output_layers)
+		results = darknet.detect(net, meta, img, thresh=threshold)
 
 		#gather detections together that are above the threshold
 		class_ids = []
 		confidences = []
 		boxes = []
-		for output in outputs:
-			for detection in output:
-				scores = detection[5:]
-				#filter people
-				class_id = np.argmax(scores) - 1
-				if class_id == -1:
-					continue
-				confidence = scores[class_id+1]
-				if confidence > threshold:
-					# Object detected
-					center_x = int(detection[0] * width)
-					center_y = int(detection[1] * height)
-					w = int(detection[2] * width)
-					h = int(detection[3] * height)
-					# Rectangle coordinates
-					x = int(center_x - w / 2)
-					y = int(center_y - h / 2)
-					boxes.append([x, y, w, h])
-					confidences.append(float(confidence))
-					class_ids.append(class_id)
+
+		coconames = []
+		cocomap = {}
+		with open("yolo/coco.names", "r") as f:
+			coconames = f.read()
+		coconames = coconames.split("\n")
+		coconames = filter(None, coconames)
+		del coconames[0]
+		for i in range(len(coconames)):
+			cocomap[coconames[i]]  = i
+
+		for result in results:
+			if result[0] == "person":
+				continue
+			boxes.append(result[2])
+			confidences.append(result[1])
+			class_ids.append(cocomap[result[0]])
 		classList = [classes[x] for x in class_ids]
 
 		uniqueIDs = list(set(class_ids))
@@ -212,4 +207,3 @@ for threshold in thresholds:
 
 	with open('exp2-results-' + str(aeInfluence) + '.pickle', 'wb') as f:
 		pickle.dump([yoloResults, aeResults], f)
-

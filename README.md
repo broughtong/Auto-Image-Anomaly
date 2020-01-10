@@ -67,7 +67,7 @@ Download the images for COCO:
 `python3 exp2-download.py`
 
 Run the experiment:
-`python exp2-yolo-2.py`
+`python exp2-yolo.py`
 
 Alternatively, you can run the experiment using the GPU implementation, but it is a bit more work to get running.
 First of all switch to the gpu branch of the repository:
@@ -78,4 +78,4 @@ Next, copy the `libdarknet.so` and `python/darknet.py` into this folder.
 Open darknet.py and on approx. line 50, change it to read:
 `lib = CDLL("./libdarknet.so", RTLD_GLOBAL)`
 (Small subtle difference)
-Then you can run `python exp2-yolo.py`, which if your pc is set up correctly with CUDA should now be on the GPU
+Then you can run `python exp2-yolo-gpu.py`, which if your pc is set up correctly with CUDA should now be on the GPU

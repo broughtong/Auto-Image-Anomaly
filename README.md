@@ -70,9 +70,7 @@ Run the experiment:
 `python exp2-yolo.py`
 
 Alternatively, you can run the experiment using the GPU implementation, but it is a bit more work to get running.
-First of all switch to the gpu branch of the repository:
-`git checkout gpu`
-Then, download the darknet yolo implementation from `https://pjreddie.com/darknet/yolo/`
+Download the darknet yolo implementation from `https://pjreddie.com/darknet/yolo/`
 You will need to make this, and make sure in the makefile that GPU and cudnn are set to 1
 Next, copy the `libdarknet.so` and `python/darknet.py` into this folder.
 Open darknet.py and on approx. line 50, change it to read:

@@ -1,3 +1,4 @@
+#lock seed for nn weight init, so results are reproducible
 from numpy.random import seed
 seed(1)
 from tensorflow import set_random_seed
@@ -15,12 +16,13 @@ from keras import regularizers
 import numpy as np
 
 encoders = [80, 70, 60, 50, 40, 30, 25, 20, 15, 10, 8, 5, 4, 3, 2, 1]
-encoders = [4, 20, 50]
+encoders = range(1, 40)
 
 activationFunction = "relu"
 activationFunction = "sigmoid"
-
 regulariser = False
+ratio = 10
+epochs = 100
 
 history = []
 
@@ -35,7 +37,6 @@ for encodeN in encoders:
 	else:
 		encoded = Dense(encoding_dim, activation=activationFunction, activity_regularizer=regularizers.l1(10e-5))(input_img)
 
-	activationFunction = "sigmoid"
 	decoded = Dense(80, activation=activationFunction)(encoded)
 
 	autoencoder = Model(input_img, decoded)
@@ -45,11 +46,15 @@ for encodeN in encoders:
 	decoder_layer = autoencoder.layers[-1]
 	decoder = Model(encoded_input, decoder_layer(encoded_input))
 
-	autoencoder.compile(optimizer='adadelta', loss='binary_crossentropy')
+	autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
 
 	data = []
-	with open("list_of_categories_by_image.pickle", "rb") as f:
-		data = pickle.load(f)
+	try:
+		with open("list_of_categories_by_image.pickle", "rb") as f:
+			data = pickle.load(f)
+	except:
+		print("Error opening coco data. Make sure your running python3, and have run the dataset collecter first")
+		break
 
 	indexmap = {}
 	with open("indexmap", "rb") as f:
@@ -62,7 +67,7 @@ for encodeN in encoders:
 	lTestSet = 0
 	ind = 0
 	for _ in data:
-		if ind % 5 == 0:
+		if ind % ratio == 0:
 			lTestSet += 1
 		else:
 			lTrainSet += 1
@@ -97,7 +102,7 @@ for encodeN in encoders:
 
 		ind = 0
 		for key in observations:
-			if idx % 5 == 0:
+			if idx % ratio == 0:
 				# print(currentTestIdx)
 				testSet[currentTestIdx][ind] = observations[key]
 				# currentTestIdx += 1
@@ -107,25 +112,23 @@ for encodeN in encoders:
 				# currentTrainIdx += 1
 			ind += 1
 
-		if idx % 5 == 0:
+		if idx % ratio == 0:
 			currentTestIdx += 1
 		else:
 			currentTrainIdx += 1
 
-	epochs = 120
 	history = autoencoder.fit(trainSet, trainSet,
 		epochs=epochs,
 		batch_size=256,
 		shuffle=True,
 		validation_data=(testSet, testSet))
 
-	if r == True:
-		with open('dump-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + "-r.pickle", 'wb') as fp:
-			pickle.dump(history.history, fp)
-	else:
-		with open('dump-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + '.pickle', 'wb') as fp:
-			pickle.dump(history.history, fp)
+	regString = ""
+	if regulariser == True:
+		regString = "-reg"
 
-	autoencoder.save('models/autoencoder' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + '.h5')
-	encoder.save('models/encoder' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + '.h5')
-	decoder.save('models/decoder' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + '.h5')
+	with open('../trainedModels/history-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + regString + ".pickle", 'wb') as fp:
+		pickle.dump(history.history, fp)
+	autoencoder.save('../trainedModels/autoencoder-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + regString + '.h5')
+	encoder.save('../trainedModels/encoder-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + regString + '.h5')
+	decoder.save('../trainedModels/decoder-' + str(encoding_dim) + "-" + str(epochs) + "-" + activationFunction + regString + '.h5')

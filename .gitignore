@@ -1,4 +1,4 @@
-models/*
+trainedModels/*
 annotations/*
 annotations_trainval2017.zip
 libdarknet*

@@ -16,7 +16,7 @@ from keras import regularizers
 import numpy as np
 
 encoders = [80, 70, 60, 50, 40, 30, 25, 20, 15, 10, 8, 5, 4, 3, 2, 1]
-encoders = range(1, 40)
+encoders = range(1, 40) + [40, 50, 60, 70, 80]
 
 activationFunction = "relu"
 activationFunction = "sigmoid"

@@ -1,3 +1,8 @@
+from numpy.random import seed
+seed(1)
+from tensorflow import set_random_seed
+set_random_seed(1)
+
 import os
 import pickle
 import random
@@ -12,7 +17,11 @@ import numpy as np
 encoders = [80, 70, 60, 50, 40, 30, 25, 20, 15, 10, 8, 5, 4, 3, 2, 1]
 encoders = [4, 20, 50]
 
-r = False
+activationFunction = "relu"
+activationFunction = "sigmoid"
+
+regulariser = False
+
 history = []
 
 for encodeN in encoders:
@@ -20,10 +29,12 @@ for encodeN in encoders:
 	encoding_dim = encodeN
 
 	input_img = Input(shape=(80,))
-	if r == False:
-		encoded = Dense(encoding_dim, activation='relu')(input_img)
+
+	if regulariser == False:
+		encoded = Dense(encoding_dim, activation=activationFunction)(input_img)
 	else:
-		encoded = Dense(encoding_dim, activation='relu', activity_regularizer=regularizers.l1(10e-5))(input_img)
+		encoded = Dense(encoding_dim, activation=activationFunction, activity_regularizer=regularizers.l1(10e-5))(input_img)
+
 	activationFunction = "sigmoid"
 	decoded = Dense(80, activation=activationFunction)(encoded)
 

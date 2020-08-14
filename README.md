@@ -67,7 +67,9 @@ Download the images for COCO:
 `python3 exp2-download.py`
 
 Run the experiment:
-`python exp2-yolo.py`
+`python exp2-yolo-cpu.py`
+or 
+`python exp2-yolo-gpu.py`
 
 Alternatively, you can run the experiment using the GPU implementation, but it is a bit more work to get running.
 Download the darknet yolo implementation from `https://pjreddie.com/darknet/yolo/`

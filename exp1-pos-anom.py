@@ -6,14 +6,15 @@ import random
 import sys
 
 #20 least common object ids in coco
-idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37]
-#idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37, 77, 18, 40, 55, 87, 10, 15, 52, 54, 39, 51, 56, 8, 38, 6, 73, 32, 67, 81, 53, 31, 75, 44, 78, 85, 42, 60, 3, 84, 58, 64, 74, 49, 27, 47, 16, 5, 17, 36, 9, 80, 63, 76, 72, 48, 62, 14, 70, 25, 7, 82, 28, 50, 43, 46, 65, 2, 61]
+#idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37]
+idsToAdd = [22, 88, 79, 23, 86, 24, 21, 35, 89, 19, 13, 41, 4, 20, 33, 59, 57, 34, 11, 37, 77, 18, 40, 55, 87, 10, 15, 52, 54, 39, 51, 56, 8, 38, 6, 73, 32, 67, 81, 53, 31, 75, 44, 78, 85, 42, 60, 3, 84, 58, 64, 74, 49, 27, 47, 16, 5, 17, 36, 9, 80, 63, 76, 72, 48, 62, 14, 70, 25, 7, 82, 28, 50, 43, 46, 65, 2, 61]
 
 valfn = "annotations/val-distribution-noppl-multi.json"
 
-encDimsValues = list(range(5, 16))
+encDimsValues = list(range(10, 26))
 
 autoencoders = [load_model('models/autoencoder-79-' + str(i) +'.h5') for i in encDimsValues]
+#autoencoders = [load_model('model-maker/models/autoencoder' + str(i) + '-120-sigmoid'+'.h5') for i in encDimsValues]
 
 size = 80
 if "-noppl-" in valfn:
@@ -47,7 +48,7 @@ anomsToTest = 10
 
 
 changedVals = []
-seed_max = 20
+seed_max = 100
 for seed in range(0, seed_max):
 	totals = []
 	ns = []

@@ -7,8 +7,10 @@ import sys
 
 valfn = "annotations/val-distribution-noppl-multi.json"
 
-encDimsValues = list(range(5, 16))
+encDimsValues = list(range(10, 26))
+
 autoencoders = [load_model('models/autoencoder-79-' + str(i) +'.h5') for i in encDimsValues]
+#autoencoders = [load_model('model-maker/models/autoencoder' + str(i) + '-120-sigmoid'+'.h5') for i in encDimsValues]
 
 size = 80
 if "-noppl-" in valfn:
@@ -108,7 +110,7 @@ anomsToTest = 5
 
 
 changedVals = []
-seed_max = 20
+seed_max = 100
 for seed in range(0, seed_max):
 	totals = []
 	ns = []

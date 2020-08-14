@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 file_out = sys.argv[1]
 
-file_in1 = "exp1_results_20least.txt"
+file_in1 = "exp1_results.txt"
 file_in2 = "exp1_results_neg.txt"
 
 

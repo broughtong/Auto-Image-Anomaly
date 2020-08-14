@@ -108,7 +108,7 @@ for seed in range(0, seed_max):
 				
 				inputs[inputs == 0] = np.nan
 				predictions[inputs == np.nan] = np.nan
-				top_n = 2
+				top_n = 1
 				if a in np.argsort(predictions)[:top_n]:
 					correct = 1
 				else:

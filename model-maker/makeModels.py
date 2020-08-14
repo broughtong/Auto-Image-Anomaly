@@ -9,8 +9,11 @@ from keras.models import Model
 from keras import regularizers
 import numpy as np
 
-encoders = [80, 70, 60, 50, 40, 30, 25, 20, 15, 10, 8, 5, 4, 3, 2, 1]
-encoders = [4, 20, 50]
+#encoders = [80, 70, 60, 50, 40, 30, 25, 20, 15, 10, 8, 5, 4, 3, 2, 1]
+encoders = []
+#encoders = [4, 20, 50]
+#encoders = encoders + [14, 13, 12, 11, 9]
+encoders = encoders + list(range(15, 26))
 
 r = False
 history = []

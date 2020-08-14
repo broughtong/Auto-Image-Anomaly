@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 data = []
-with open('exp2-results-05.pickle', 'rb') as f:
+with open('results/exp2-results-0.1.pickle', 'rb') as f:
 	data = pickle.load(f)
 
 #yolo
@@ -14,7 +14,11 @@ for i in yolo:
 	#data format: (threshold, yoloCorrect, yoloTotal, yoloConfmat)
 	x.append(i[0])
 	accuracy = float(i[1] / i[2])
+	print("th {}: correct {} of {} total".format(i[0], i[1], i[2]))
 	y.append(accuracy)
+print("YOLO only")
+#print(x)
+#print(y)
 plt.plot(x, y, '-x', label='YOLO Only')
 
 #yolo w/ ae
@@ -25,8 +29,12 @@ for i in ae:
 	#data format: (threshold, yoloCorrect, yoloTotal, yoloConfmat)
 	x.append(i[0])
 	accuracy = float(i[1] / i[2])
+	print("th {}: correct {} of {} total".format(i[0], i[1], i[2]))
 	y.append(accuracy)
 
+print("YOLO w/ Autoencoder")
+#print(x)
+#print(y)
 plt.plot(x, y, '-x', label='YOLO w/ Autoencoder')
 
 plt.axvline(x=0.25, color='red', linestyle='--', label="YOLO default threshold")

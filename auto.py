@@ -9,7 +9,7 @@ edgeDim = 80
 if "-noppl-" in fn:
 	edgeDim = 79
 	
-for i in range(1, 15):
+for i in range(1, 16):
 	encodedDim = i
 
 	input_img = Input(shape=(edgeDim,))
@@ -38,7 +38,7 @@ for i in range(1, 15):
 	testDataset = np.array(test, dtype=np.float32)
 	trainDataset = np.array(train, dtype=np.float32)
 
-	autoencoder.fit(trainDataset, trainDataset, epochs=150, batch_size=256, shuffle=True, validation_data=(testDataset, testDataset))
+	autoencoder.fit(trainDataset, trainDataset, epochs=1500, batch_size=256, shuffle=True, validation_data=(testDataset, testDataset))
 	try:
 		os.mkdir("models")
 	except:

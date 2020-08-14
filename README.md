@@ -65,3 +65,17 @@ Download yolo weights:
 
 Download the images for COCO:
 `python3 exp2-download.py`
+
+Run the experiment:
+`python exp2-yolo-cpu.py`
+or 
+`python exp2-yolo-gpu.py`
+
+Alternatively, you can run the experiment using the GPU implementation, but it is a bit more work to get running.
+Download the darknet yolo implementation from `https://pjreddie.com/darknet/yolo/`
+You will need to make this, and make sure in the makefile that GPU and cudnn are set to 1
+Next, copy the `libdarknet.so` and `python/darknet.py` into this folder.
+Open darknet.py and on approx. line 50, change it to read:
+`lib = CDLL("./libdarknet.so", RTLD_GLOBAL)`
+(Small subtle difference)
+Then you can run `python exp2-yolo-gpu.py`, which if your pc is set up correctly with CUDA should now be on the GPU
